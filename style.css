@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
-padding: 0;
+padding: 0px;
 margin: 0;
 box-sizing: border-box;
 font-family: "Roboto", sans-serif;
@@ -67,7 +67,7 @@ li {
   font: 20px;
   color: #7342d6;
   font-weight: bold;
-  padding: 8px;
+  padding: 4px;
 }
 
 .nav__link:hover {
@@ -89,6 +89,7 @@ font-size: 40px;
 text-align: center;
 border: none;
 color: #7342d6;
+display: none;
 }
 
 .menu__backdrop {
@@ -99,26 +100,37 @@ color: #7342d6;
   right: 0;
   bottom: 0;
   z-index: 100;
-  /* display: flex; */
+  display: flex; 
   justify-content: center;
   align-items: center;
-  display: none;
+  transition: all 300ms ease;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .menu--open .menu__backdrop {
-  display: flex;
-}
+   visibility: visible;
+   opacity: 1;
+  }
+  .menu--open {
+    max-height: 100vh;
+    overflow-y: hidden;
+  }
 
 .menu__links {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+}
+.menu__list {
+  padding: 32px 0;
 }
 
 .menu__link {
-padding: 32px, 0;
-
-
+color: white;
+ font-size: 24px;
+ padding: 32px, 32px;
 }
 
 .btn__menu--close {
@@ -218,24 +230,20 @@ margin: 0 auto;
   width: 101vw;
 height: 12vw;
 left: 0;
-z-index: 1;
+z-index: -1;
 background-size: cover;
 background-repeat:  no-repeat;
 background-color: rgba(115, 66, 214, .1);
 }
 
-#highlights:before { 
-transform: translateY(-100%);
-top: 1px;
-}
-
 #highlights:after {
-transform: translateY(100%) rotate(180deg);
-bottom: 1px;
+transform: rotate(180deg);
+bottom: 0;
 }
 
 .highlights__wrapper {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .highlights {
@@ -243,7 +251,6 @@ bottom: 1px;
   width:  calc(100% / 3);
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
 }
 
@@ -268,6 +275,7 @@ bottom: 1px;
 .hightlights__subtitle {
   font-size: 20px;
   margin-bottom: 16px;
+  text-align: center;
 }
 
 /*   FEATURES   */
@@ -403,4 +411,44 @@ footer {
 .footer__anchor:hover .footer__logo--popper {
 transform: translateX(60px);
 opacity: 1;
+}
+
+/* SMALL PHONES, TABLETS. LARGE SMARTPHONES */
+@media (max-width: 768px){
+  .header__discription {
+    padding: 0 24px;
+  }
+.h1 {
+  font-size: 40px;
+}
+h2 {
+  font-size: 26px;
+}
+button {
+  font-size: 18px;
+}
+
+.book {
+  width: 50%;
+}
+}
+
+
+
+/* SMALL PHONES, LARGE SMARTPHONES */
+
+@media (max-width: 550px) {
+  .nav__link {
+    display: none;
+  }
+.btn__menu {
+  display: block;
+}
+
+.highlights {
+  width: 100%;
+}
+.highlights:not(:lasr-child) {
+  margin-bottom: 24px;
+}
 }
